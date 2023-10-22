@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "mood-trend-dev",
+    "dev": "mood-trend-dev",
+    "prod": "mood-trend-prod"
+  }
+}

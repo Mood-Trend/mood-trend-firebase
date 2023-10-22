@@ -1,0 +1,39 @@
+name: CD Production
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  deploy_functions:
+    name: Deploy Functions
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PROJECT_ID: ${{ secrets.PROJECT_ID_PROD }}
+      WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_PROD }}
+      SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT_PROD }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
+          create_credentials_file: true
+          export_environment_variables: true
+      - name: Setup Firebase
+        uses: ./.github/actions/setup_firebase
+        with:
+          gcp_sa_key_dev: ${{ env.SERVICE_ACCOUNT }}
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./functions
+      - name: Deploy to Functions
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only functions --force --project=${{ env.PROJECT_ID }}
