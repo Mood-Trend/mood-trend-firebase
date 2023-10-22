@@ -5,35 +5,35 @@ export class User {
   /**
    * ユーザーID
    */
-  uid = ``
+  uid = "";
 
   /**
    * 表示名
    */
-  displayName = ``
+  displayName = "";
 
   /**
    * 画像URL
    */
 
-  imageUrl = ``
+  imageUrl = "";
 
   /**
    * 作成日時
    */
-  createdAt?: Date
+  createdAt?: Date;
 
   /**
    * 更新日時
    */
-  updatedAt?: Date
+  updatedAt?: Date;
 
   constructor(partial?: Partial<User>) {
-    Object.assign(this, partial)
+    Object.assign(this, partial);
   }
 }
 
 /**
  * 認証プロバイダー
  */
-export type AuthProvider = `anonymous`
+export type AuthProvider = "anonymous";
