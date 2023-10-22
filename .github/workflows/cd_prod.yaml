@@ -36,3 +36,5 @@ jobs:
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only functions --force --project=${{ env.PROJECT_ID }}
+        env:
+          GCP_SA_KEY: ${{ env.SERVICE_ACCOUNT }}
