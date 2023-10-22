@@ -7,6 +7,9 @@ jobs:
   deploy_functions:
     name: Deploy Functions
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     timeout-minutes: 60
     env:
       PROJECT_ID: ${{ secrets.PROJECT_ID_DEV }}
