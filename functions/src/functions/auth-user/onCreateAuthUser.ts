@@ -1,9 +1,9 @@
-import 'reflect-metadata'
-import * as functions from 'firebase-functions'
-import { constants } from '../../config/constants'
-import { User } from '../../firestore-collection/user/entity/user'
-import { container, providers } from '../../config/dicon'
-import { UserRepository } from '../../firestore-collection/user/userRepository'
+import "reflect-metadata";
+import * as functions from "firebase-functions";
+import { constants } from "../../config/constants";
+import { User } from "../../firestore-collection/user/entity/user";
+import { container, providers } from "../../config/dicon";
+import { UserRepository } from "../../firestore-collection/user/userRepository";
 
 /**
  * 認証ユーザーが作成されたらユーザードキュメントを追加する
@@ -14,9 +14,11 @@ export const onCreateAuthUser = functions
   .onCreate(async (user) => {
     const input = new User({
       uid: user.uid,
-    })
+    });
 
-    const userRepository = container.get<UserRepository>(providers.userRepository)
-    await userRepository.add({ input: input })
-    functions.logger.info(`ユーザーを追加しました: uid = ${input.uid}`)
-  })
+    const userRepository = container.get<UserRepository>(
+      providers.userRepository
+    );
+    await userRepository.add({ input: input });
+    functions.logger.info(`ユーザーを追加しました: uid = ${input.uid}`);
+  });

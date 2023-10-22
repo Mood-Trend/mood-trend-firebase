@@ -1,20 +1,39 @@
+/**
+ * 定数を保持するクラス。
+ */
 class Constants {
   /**
-   * リージョン
+   * リージョンを取得します。
+   *
+   * @return {string} リージョン。
    */
-  region = `asia-northeast1`
+  get region() {
+    return "asia-northeast1";
+  }
 
   /**
-   * タイムゾーン
+   * タイムゾーンを取得します。
+   *
+   * @return {string} タイムゾーン。
    */
-  timezone = `Asia/Tokyo`
+  get timezone() {
+    return "Asia/Tokyo";
+  }
 
   /**
-   * 秘匿情報のリスト
+   * 秘匿情報のリストを取得します。
    * runWith() への引数として利用する。
    * 秘匿情報を追加したらここに追加すること。
+   *
+   * @return {Array} 秘匿情報のリスト。
    */
-  secrets = []
+  get secrets() {
+    return [];
+  }
 }
 
-export const constants = new Constants()
+/**
+ * 定数のインスタンス。
+ * @type {Constants}
+ */
+export const constants = new Constants();

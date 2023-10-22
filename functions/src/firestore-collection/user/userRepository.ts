@@ -1,9 +1,9 @@
-import 'reflect-metadata'
-import { inject, injectable, LazyServiceIdentifer } from 'inversify'
-import { CollectionReference } from 'firebase-admin/firestore'
-import { User } from './entity/user'
-import { providers } from '../../config/dicon'
-import * as dayjs from 'dayjs'
+import "reflect-metadata";
+import { inject, injectable, LazyServiceIdentifer } from "inversify";
+import { CollectionReference } from "firebase-admin/firestore";
+import { User } from "./entity/user";
+import { providers } from "../../config/dicon";
+import * as dayjs from "dayjs";
 
 /**
  * ユーザーリポジトリ
@@ -22,7 +22,7 @@ export class UserRepository {
    * ユーザーを追加する
    */
   async add({ input }: { input: User }): Promise<void> {
-    input.createdAt = dayjs().toDate()
-    await this.collectionRef.doc(input.uid).set(input)
+    input.createdAt = dayjs().toDate();
+    await this.collectionRef.doc(input.uid).set(input);
   }
 }
