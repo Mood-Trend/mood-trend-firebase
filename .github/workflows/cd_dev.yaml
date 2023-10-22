@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      PROJECT_ID: ${{ secrets.PROJECT_ID_PROD }}
+      PROJECT_ID: ${{ secrets.PROJECT_ID_DEV }}
       WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_DEV }}
       SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT_DEV }}
     steps:

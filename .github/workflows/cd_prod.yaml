@@ -10,8 +10,8 @@ jobs:
     timeout-minutes: 60
     env:
       PROJECT_ID: ${{ secrets.PROJECT_ID_PROD }}
-      WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_DEV }}
-      SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT_DEV }}
+      WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER_PROD }}
+      SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT_PROD }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
