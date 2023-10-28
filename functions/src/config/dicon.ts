@@ -52,7 +52,7 @@ container
   .bind<FirebaseFirestore.CollectionReference<User>>(providers.userRef)
   .toDynamicValue((context) => {
     const db = context.container.get<Firestore>(providers.firestoreDb);
-    return db.collection("user").withConverter<User>(userConverter);
+    return db.collection("users").withConverter<User>(userConverter);
   })
   .inSingletonScope();
 container.bind<UserRepository>(providers.userRepository).to(UserRepository);

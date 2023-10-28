@@ -6,18 +6,18 @@ export const userConverter: FirestoreDataConverter<User> = {
     const data = snapshot.data();
     return {
       uid: snapshot.id,
-      displayName: data.displayName,
-      imageUrl: data.imageUrl,
-      createdAt: data.createdAt?.toDate(),
-      updatedAt: data.updatedAt?.toDate(),
+      displayName: data.display_name,
+      imageUrl: data.image_url,
+      createdAt: data.created_at?.toDate(),
+      updatedAt: data.updated_at?.toDate(),
     };
   },
   toFirestore(user: User): FirebaseFirestore.DocumentData {
     return {
-      displayName: user.displayName,
-      imageUrl: user.imageUrl,
-      createdAt: user.createdAt ? FieldValue.serverTimestamp() : undefined,
-      updatedAt: FieldValue.serverTimestamp(),
+      display_name: user.displayName,
+      image_url: user.imageUrl,
+      created_at: user.createdAt ? FieldValue.serverTimestamp() : undefined,
+      updated_at: FieldValue.serverTimestamp(),
     };
   },
 };
