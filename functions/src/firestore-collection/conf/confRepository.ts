@@ -14,7 +14,7 @@ export class ConfRepository {
     /**
      * コレクション参照
      */
-    @inject(new LazyServiceIdentifer(() => providers.moodWorksheetRef))
+    @inject(new LazyServiceIdentifer(() => providers.confRef))
     private collectionRef: CollectionReference<Conf>
   ) {}
 
