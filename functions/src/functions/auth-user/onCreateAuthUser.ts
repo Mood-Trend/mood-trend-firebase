@@ -19,8 +19,8 @@ export const onCreateAuthUser = functions
     const inputUser = new User({
       uid: user.uid,
     });
-    const inputMoodWorksheet = new MoodWorksheet({});
-    const inputUserConf = new Conf({});
+    const inputMoodWorksheet = new MoodWorksheet();
+    const inputUserConf = new Conf();
 
     const userRepository = container.get<UserRepository>(
       providers.userRepository
