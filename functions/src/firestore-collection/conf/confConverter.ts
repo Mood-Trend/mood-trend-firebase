@@ -14,8 +14,8 @@ export const confConverter: FirestoreDataConverter<Conf> = {
   },
   toFirestore(conf: Conf): FirebaseFirestore.DocumentData {
     return {
-      maxPlannedVolume: conf.maxPlannedVolume,
-      isOnboardingCompleted: conf.isOnboardingCompleted,
+      max_planned_volume: conf.maxPlannedVolume,
+      is_onboarding_completed: conf.isOnboardingCompleted,
       created_at: conf.createdAt ? FieldValue.serverTimestamp() : undefined,
       updated_at: FieldValue.serverTimestamp(),
     };
