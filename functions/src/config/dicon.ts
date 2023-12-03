@@ -88,7 +88,7 @@ container
   })
   .inSingletonScope();
 container
-  .bind<MoodWorksheetRepository>(providers.userRepository)
+  .bind<MoodWorksheetRepository>(providers.moodWorksheetRepository)
   .to(MoodWorksheetRepository);
 
 /**
