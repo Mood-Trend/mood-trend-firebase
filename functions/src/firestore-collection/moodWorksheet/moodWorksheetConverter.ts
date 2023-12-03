@@ -22,21 +22,19 @@ export const moodWorksheetConverter: FirestoreDataConverter<MoodWorksheet> = {
       updatedAt: data.updated_at?.toDate(),
     };
   },
-  toFirestore(workSheet: MoodWorksheet): FirebaseFirestore.DocumentData {
+  toFirestore(value: MoodWorksheet): FirebaseFirestore.DocumentData {
     return {
-      minus5: workSheet.minus5,
-      minus4: workSheet.minus4,
-      minus3: workSheet.minus3,
-      minus2: workSheet.minus2,
-      minus1: workSheet.minus1,
-      plus1: workSheet.plus1,
-      plus2: workSheet.plus2,
-      plus3: workSheet.plus3,
-      plus4: workSheet.plus4,
-      plus5: workSheet.plus5,
-      created_at: workSheet.createdAt
-        ? FieldValue.serverTimestamp()
-        : undefined,
+      minus5: value.minus5,
+      minus4: value.minus4,
+      minus3: value.minus3,
+      minus2: value.minus2,
+      minus1: value.minus1,
+      plus1: value.plus1,
+      plus2: value.plus2,
+      plus3: value.plus3,
+      plus4: value.plus4,
+      plus5: value.plus5,
+      created_at: value.createdAt ? FieldValue.serverTimestamp() : undefined,
       updated_at: FieldValue.serverTimestamp(),
     };
   },
