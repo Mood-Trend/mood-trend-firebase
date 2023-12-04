@@ -79,7 +79,9 @@ container.bind<UserRepository>(providers.userRepository).to(UserRepository);
  * moodWorksheet
  */
 container
-  .bind<FirebaseFirestore.CollectionReference>(providers.moodWorksheetRef)
+  .bind<FirebaseFirestore.CollectionReference<MoodWorksheet>>(
+    providers.moodWorksheetRef
+  )
   .toDynamicValue((context) => {
     const db = context.container.get<Firestore>(providers.firestoreDb);
     return db
@@ -95,7 +97,7 @@ container
  * conf
  */
 container
-  .bind<FirebaseFirestore.CollectionReference>(providers.confRef)
+  .bind<FirebaseFirestore.CollectionReference<Conf>>(providers.confRef)
   .toDynamicValue((context) => {
     const db = context.container.get<Firestore>(providers.firestoreDb);
     return db.collection("users").withConverter<Conf>(confConverter);
