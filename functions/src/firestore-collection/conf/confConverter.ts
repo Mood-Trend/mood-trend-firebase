@@ -6,8 +6,8 @@ export const confConverter: FirestoreDataConverter<Conf> = {
     const data = snapshot.data();
     return {
       confId: snapshot.id,
-      maxPlannedVolume: data.maxPlannedVolume,
-      isOnboardingCompleted: data.isOnboardingCompleted,
+      maxPlannedVolume: data.max_planned_volume,
+      isOnboardingCompleted: data.is_onboarding_completed,
       createdAt: data.created_at?.toDate(),
       updatedAt: data.updated_at?.toDate(),
     };
