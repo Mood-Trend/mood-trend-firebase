@@ -42,7 +42,7 @@ export const providers = {
   /**
    * Conf
    */
-  confRef: Symbol.for("conftRef"),
+  confRef: Symbol.for("confRef"),
   confRepository: Symbol.for("confRepository"),
 };
 
