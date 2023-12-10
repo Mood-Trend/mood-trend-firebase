@@ -4,10 +4,10 @@ import { constants } from "../../config/constants";
 import { User } from "../../firestore-collection/user/entity/user";
 import { container, providers } from "../../config/dicon";
 import { UserRepository } from "../../firestore-collection/user/userRepository";
-import { MoodWorksheetRepository } from "~/src/firestore-collection/moodWorksheet/moodWorksheetRepository";
-import { ConfRepository } from "~/src/firestore-collection/conf/confRepository";
-import { MoodWorksheet } from "~/src/firestore-collection/moodWorksheet/entity/moodWorksheet";
-import { Conf } from "~/src/firestore-collection/conf/entity/conf";
+import { MoodWorksheetRepository } from "../../firestore-collection/mood-worksheet/moodWorksheetRepository";
+import { ConfRepository } from "../../firestore-collection/conf/confRepository";
+import { Conf } from "../../firestore-collection/conf/entity/conf";
+import { MoodWorksheet } from "../../firestore-collection/mood-worksheet/entity/moodWorksheet";
 
 /**
  * 認証ユーザーが作成されたらユーザードキュメント、症状ワークシートドキュメント、ユーザー設定ドキュメントを追加する
