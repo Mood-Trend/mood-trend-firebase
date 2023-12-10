@@ -4,6 +4,8 @@ import { CollectionReference } from "firebase-admin/firestore";
 import { MoodWorksheet } from "./entity/moodWorksheet";
 import { providers } from "../../config/dicon";
 import * as dayjs from "dayjs";
+import { User } from "../user/entity/user";
+import { moodWorksheetConverter } from "./moodWorksheetConverter";
 
 /**
  * 症状ワークシートリポジトリ
@@ -14,8 +16,8 @@ export class MoodWorksheetRepository {
     /**
      * コレクション参照
      */
-    @inject(new LazyServiceIdentifer(() => providers.moodWorksheetRef))
-    private collectionRef: CollectionReference<MoodWorksheet>
+    @inject(new LazyServiceIdentifer(() => providers.userRef))
+    private collectionRef: CollectionReference<User>
   ) {}
 
   /**
@@ -28,7 +30,11 @@ export class MoodWorksheetRepository {
     uid: string;
     input: MoodWorksheet;
   }): Promise<void> {
+    const moodWorksheetRef = this.collectionRef
+      .doc(uid)
+      .collection("mood_worksheet")
+      .withConverter(moodWorksheetConverter);
     input.createdAt = dayjs().toDate();
-    await this.collectionRef.doc(uid).collection("mood_worksheet").add(input);
+    await moodWorksheetRef.add(input);
   }
 }

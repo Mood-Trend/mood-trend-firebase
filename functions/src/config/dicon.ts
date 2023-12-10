@@ -5,12 +5,8 @@ import * as admin from "firebase-admin";
 import { User } from "../firestore-collection/user/entity/user";
 import { userConverter } from "../firestore-collection/user/userConverter";
 import { UserRepository } from "../firestore-collection/user/userRepository";
-import { MoodWorksheet } from "../firestore-collection/moodWorksheet/entity/moodWorksheet";
-import { moodWorksheetConverter } from "../firestore-collection/moodWorksheet/moodWorksheetConverter";
-import { MoodWorksheetRepository } from "../firestore-collection/moodWorksheet/moodWorksheetRepository";
-import { confConverter } from "../firestore-collection/conf/confConverter";
+import { MoodWorksheetRepository } from "../firestore-collection/mood-worksheet/moodWorksheetRepository";
 import { ConfRepository } from "../firestore-collection/conf/confRepository";
-import { Conf } from "../firestore-collection/conf/entity/conf";
 
 /**
  * DI コンテナー
@@ -36,13 +32,11 @@ export const providers = {
   /**
    * MoodWorksheet
    */
-  moodWorksheetRef: Symbol.for("moodWorksheetRef"),
   moodWorksheetRepository: Symbol.for("moodWorksheetRepository"),
 
   /**
    * Conf
    */
-  confRef: Symbol.for("confRef"),
   confRepository: Symbol.for("confRepository"),
 };
 
@@ -79,28 +73,10 @@ container.bind<UserRepository>(providers.userRepository).to(UserRepository);
  * moodWorksheet
  */
 container
-  .bind<FirebaseFirestore.CollectionReference<MoodWorksheet>>(
-    providers.moodWorksheetRef
-  )
-  .toDynamicValue((context) => {
-    const db = context.container.get<Firestore>(providers.firestoreDb);
-    return db
-      .collection("users")
-      .withConverter<MoodWorksheet>(moodWorksheetConverter);
-  })
-  .inSingletonScope();
-container
   .bind<MoodWorksheetRepository>(providers.moodWorksheetRepository)
   .to(MoodWorksheetRepository);
 
 /**
  * conf
  */
-container
-  .bind<FirebaseFirestore.CollectionReference<Conf>>(providers.confRef)
-  .toDynamicValue((context) => {
-    const db = context.container.get<Firestore>(providers.firestoreDb);
-    return db.collection("users").withConverter<Conf>(confConverter);
-  })
-  .inSingletonScope();
 container.bind<ConfRepository>(providers.confRepository).to(ConfRepository);
