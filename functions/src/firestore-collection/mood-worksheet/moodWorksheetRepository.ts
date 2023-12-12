@@ -37,4 +37,21 @@ export class MoodWorksheetRepository {
     input.createdAt = dayjs().toDate();
     await moodWorksheetRef.add(input);
   }
+
+  /**
+   * 症状ワークシートを削除する
+   */
+  async delete({
+    uid,
+    moodWorksheetId,
+  }: {
+    uid: string;
+    moodWorksheetId: string;
+  }): Promise<void> {
+    const moodWorksheetRef = this.collectionRef
+      .doc(uid)
+      .collection("mood_worksheet")
+      .withConverter(moodWorksheetConverter);
+    await moodWorksheetRef.doc(moodWorksheetId).delete();
+  }
 }
