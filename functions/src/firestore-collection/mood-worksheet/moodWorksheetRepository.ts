@@ -41,17 +41,17 @@ export class MoodWorksheetRepository {
   /**
    * 症状ワークシートを削除する
    */
-  async delete({
-    uid,
-    moodWorksheetId,
-  }: {
-    uid: string;
-    moodWorksheetId: string;
-  }): Promise<void> {
+  async delete({ uid }: { uid: string }): Promise<void> {
     const moodWorksheetRef = this.collectionRef
       .doc(uid)
       .collection("mood_worksheet")
       .withConverter(moodWorksheetConverter);
-    await moodWorksheetRef.doc(moodWorksheetId).delete();
+
+    // サブコレクション内の最初のドキュメントを取得
+    const snapshot = await moodWorksheetRef.limit(1).get();
+    if (snapshot.empty) return;
+
+    // ドキュメントが存在する場合、そのドキュメントを削除
+    await moodWorksheetRef.doc(snapshot.docs[0].id).delete();
   }
 }

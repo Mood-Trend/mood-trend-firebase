@@ -35,17 +35,17 @@ export class ConfRepository {
   /**
    * ユーザー設定を削除する
    */
-  async delete({
-    uid,
-    confId,
-  }: {
-    uid: string;
-    confId: string;
-  }): Promise<void> {
+  async delete({ uid }: { uid: string }): Promise<void> {
     const confRef = this.collectionRef
       .doc(uid)
       .collection("conf")
       .withConverter(confConverter);
-    await confRef.doc(confId).delete();
+
+    // サブコレクション内の最初のドキュメントを取得
+    const snapshot = await confRef.limit(1).get();
+    if (snapshot.empty) return;
+
+    // ドキュメントが存在する場合、そのドキュメントを削除
+    await confRef.doc(snapshot.docs[0].id).delete();
   }
 }
