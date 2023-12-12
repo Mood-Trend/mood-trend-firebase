@@ -25,4 +25,11 @@ export class UserRepository {
     input.createdAt = dayjs().toDate();
     await this.collectionRef.doc(input.uid).set(input);
   }
+
+  /**
+   * ユーザーを削除する
+   */
+  async delete({ uid }: { uid: string }): Promise<void> {
+    await this.collectionRef.doc(uid).delete();
+  }
 }

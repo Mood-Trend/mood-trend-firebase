@@ -21,7 +21,7 @@ export class ConfRepository {
   ) {}
 
   /**
-   * 症状ワークシートを生成する
+   * ユーザー設定を生成する
    */
   async create({ uid, input }: { uid: string; input: Conf }): Promise<void> {
     const confRef = this.collectionRef
@@ -30,5 +30,22 @@ export class ConfRepository {
       .withConverter(confConverter);
     input.createdAt = dayjs().toDate();
     await confRef.add(input);
+  }
+
+  /**
+   * ユーザー設定を削除する
+   */
+  async delete({ uid }: { uid: string }): Promise<void> {
+    const confRef = this.collectionRef
+      .doc(uid)
+      .collection("conf")
+      .withConverter(confConverter);
+
+    // サブコレクション内の最初のドキュメントを取得
+    const snapshot = await confRef.limit(1).get();
+    if (snapshot.empty) return;
+
+    // ドキュメントが存在する場合、そのドキュメントを削除
+    await confRef.doc(snapshot.docs[0].id).delete();
   }
 }
