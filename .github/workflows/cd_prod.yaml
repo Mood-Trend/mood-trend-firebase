@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 15
     outputs:
       functions: ${{ steps.filter.outputs.functions }}
-      hosting: ${{ steps.filter.outputs.hosting }}
+      # hosting: ${{ steps.filter.outputs.hosting }}
     steps:
       # ソースコードをチェックアウト
       - name: Check out repository
@@ -26,8 +26,6 @@ jobs:
           filters: |
             functions:
               - 'functions/**'
-            hosting:
-              - 'hosting/**'
 
   deploy_functions:
     name: Deploy Functions
@@ -63,9 +61,9 @@ jobs:
 
   deploy_hosting:
     name: Deploy Hosting
-    needs:
-      - changes
-    if: ${{ needs.changes.outputs.hosting == 'true' }}
+    # needs:
+    #   - changes
+    # if: ${{ needs.changes.outputs.hosting == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
