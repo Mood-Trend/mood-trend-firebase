@@ -1,0 +1,38 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  max-width: 100vw;
+  margin: 20px 40px;
+  line-height: 1.6em;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p {
+  margin: 4px 0 0 20px;
+}
+
+p , ul {
+  max-width: 100%;
+  font-size: 16px;
+}
+
+ul {
+  margin: 4px 0;
+}
+
+li {
+  margin: 4px 0 0 52px;
+}
+
+.non-indent > li {
+  margin-left: 40px;
+}
+
+p.non-indent {
+  margin-left: 0px;
+  margin-top: 1em;
+}
