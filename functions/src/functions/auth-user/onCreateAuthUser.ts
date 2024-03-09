@@ -31,8 +31,7 @@ export const onCreateAuthUser = functions
     const confRepository = container.get<ConfRepository>(
       providers.confRepository
     );
-    await userRepository.add({ input: inputUser });
-    functions.logger.info(`ユーザーを追加しました: uid = ${inputUser.uid}`);
+
     await moodWorksheetRepository.create({
       uid: inputUser.uid,
       input: inputMoodWorksheet,
@@ -40,6 +39,10 @@ export const onCreateAuthUser = functions
     functions.logger.info(
       `ユーザーの症状ワークシートを追加しました: uid = ${inputUser.uid}`
     );
+
     await confRepository.create({ uid: inputUser.uid, input: inputUserConf });
     functions.logger.info(`ユーザー設定を追加しました: uid = ${inputUser.uid}`);
+
+    await userRepository.add({ input: inputUser });
+    functions.logger.info(`ユーザーを追加しました: uid = ${inputUser.uid}`);
   });
