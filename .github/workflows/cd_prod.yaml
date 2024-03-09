@@ -5,33 +5,8 @@ on:
       - "*"
 
 jobs:
-  # どのサービスをデプロイするかを確認する
-  changes:
-    name: Changes
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    outputs:
-      functions: ${{ steps.filter.outputs.functions }}
-      # hosting: ${{ steps.filter.outputs.hosting }}
-    steps:
-      # ソースコードをチェックアウト
-      - name: Check out repository
-        uses: actions/checkout@v2
-
-      # 変更を検出する
-      - name: Detect changes
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            functions:
-              - 'functions/**'
-
   deploy_functions:
     name: Deploy Functions
-    needs:
-      - changes
-    if: ${{ needs.changes.outputs.functions == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -61,9 +36,6 @@ jobs:
 
   deploy_hosting:
     name: Deploy Hosting
-    # needs:
-    #   - changes
-    # if: ${{ needs.changes.outputs.hosting == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
