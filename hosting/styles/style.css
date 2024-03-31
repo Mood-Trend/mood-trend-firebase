@@ -1,0 +1,209 @@
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #FCF6EF;
+    margin-right: 10px;
+}
+
+#navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#navigation a {
+    text-decoration: none;
+    color: #000000;
+    font-size:16px;
+    font-weight: bold;
+}
+
+
+#download {
+    background: linear-gradient(90deg, #FFA928, #FFD12D);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#download:hover {
+    opacity: 0.9;
+}
+
+#top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FCF6EF;
+    padding-bottom: 20px;
+}
+
+#top-text{
+    margin-left: 100px;
+}
+
+#top h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+}
+
+#top p{
+    margin-top: 80px;
+    color: #000000;
+    line-height: 2;
+    font-size: 20px;
+}
+
+#top-image {
+    margin-right: 50px;
+    width: 40%;
+}
+
+#introduce h2{
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+}
+
+#introduce-content-first,#introduce-content-second{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+#introduce-content-first h3,#introduce-content-second h3{
+    font-size: 30px;
+    font-weight: bold;
+    color: #FF8A01;
+}
+
+#introduce-content-first p,#introduce-content-second p{
+    font-size: 20px;
+    color: #000000;
+    line-height: 2;
+}
+
+#introduce-content-first img,#introduce-content-second img{
+    width: 40%;
+}
+
+#introduce-text{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    padding-bottom: 20px; 
+}
+
+#footer-content li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#footer-content a {
+    text-decoration: none;
+    color: #000000;
+    font-size:16px; 
+    margin-right: 20px;  
+}
+
+
+@media only screen and (max-width: 768px) {
+    header {
+        display: none;
+    }
+
+
+    #top {
+        flex-direction: column; /* 画面が狭い場合は縦に並べる */
+    }
+
+    #top h1 {
+        font-size: 30px;
+    }
+    
+    #top p{
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    
+    #top-image {
+        width:100%;
+    }
+
+    #top-text {
+        margin-left: 0; /* 左マージンをリセット */
+        text-align: center; /* 中央揃えにする */
+    }
+
+    #top img {
+        margin-right: 0; /* 右マージンをリセット */
+        margin-bottom: 20px; /* 下マージンを追加 */
+    }
+
+    #introduce h2 {
+        font-size: 25px;
+    }
+
+    #introduce-content-first{
+        flex-direction: column; /* 画面が狭い場合は縦に並べる */
+    }
+
+    #introduce-content-second{
+        flex-direction: column-reverse;
+    }
+
+    #introduce-content-first h3,
+    #introduce-content-second h3 {
+        text-align: center; /* 中央揃えにする */
+        font-size: 18px;
+    }
+    #introduce-content-first p,
+    #introduce-content-second p {
+        text-align: center; /* 中央揃えにする */
+        font-size: 12px;
+    }
+
+    #introduce-content-first img ,
+    #introduce-content-second img {
+        margin-bottom: 20px; /* 下マージンを追加 */
+        width:90%;
+    }
+
+    #footer-content h2{
+        font-size: 20px;
+    }
+
+    #footer-content p{
+        font-size: 13px;
+    }
+
+    #footer-content li{
+        display: flex;
+        justify-content: center;
+    }
+
+    #footer-content a{
+        font-size: 11px;
+    }
+}
