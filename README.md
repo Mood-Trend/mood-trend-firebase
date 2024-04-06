@@ -5,8 +5,8 @@
 ## Management Target
 
 - Firebase Functions
-  - 匿名ユーザー生成時: onCreateAuthUser
-  - 匿名ユーザー削除時: onDeleteAuthUser
+  - 匿名ユーザー生成時: `onCreateAuthUser`
+  - 匿名ユーザー削除時: `onDeleteAuthUser`
 - Firebase Hosting
   - [LP](https://mood-trend-prod.web.app)
   - [利用規約](https://mood-trend-prod.web.app/term-of-service.html)
